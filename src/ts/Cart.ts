@@ -10,7 +10,7 @@ export default class Cart {
     del(id: number): void {
         const index: number = this._items.findIndex((item)=>item.id == id)
         if (index < 0) {
-            throw "element not found"
+            throw new Error("element not found")
         }
        this._items.splice(index, 1);
     }
@@ -20,13 +20,11 @@ export default class Cart {
     }
 
     sumFull(): number {
-        const sum: number = this._items.reduce((a, b)=> a + b.price, 0);
-        return sum;
+        return this._items.reduce((a, b)=> a + b.price, 0);         
     }
 
     sumWithDiscount(discount: number): number {
-        const sumWithDiscount: number = this.sumFull() * (100 - discount) / 100;
-        return sumWithDiscount;
+        return this.sumFull() * (100 - discount) / 100;
     }
 
     clear():void {
