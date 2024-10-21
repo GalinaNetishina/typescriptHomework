@@ -5,7 +5,10 @@ export default class Book implements Buyable {
         readonly id: number, 
         readonly name: string,
         readonly author: string, 
-        readonly price: number, 
+        readonly price_: number, 
         readonly pages: number) {    
+    }
+    public get price() : number {
+        return this.price_
     }
 }
